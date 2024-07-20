@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan</title>
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fasthand', cursive;
+            font-size: 20px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .container {
+            min-width: 300px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            background-color: salmon;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-image: url("ok.jpeg");
+            background-size: 600px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page > .title > h1 {
+            font-size: 50pt;
+        }
+
+        p, h1 {
+            text-align: center;
+        }
+        
+        .page.one {
+            gap: 200pt;
+        }
+
+        .page.two {
+            justify-content: space-evenly;
+            padding: 20px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding-top: 10px;
+            font-size: 25px;
+        }
+        
+        .card {
+            padding: 10pt;
+            width: 250px;
+            height: 300pt;
+            background-color: beige;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+        }
+
+        .line {
+            width: 200px;
+            height: 3px;
+            background-color: black;
+            margin: 10px auto;
+            transition: background-color 0.3s;
+        }
+
+        .countdown-container {
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: beige;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .countdown-container:hover {
+            transform: scale(1.05);
+            background-color: #e0d9c4;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode .guest-name {
+            background-color: #333333;
+            border-color: #ffffff;
+        }
+
+        .dark-mode .page {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        .dark-mode .card {
+            background-color: black;
+        }
+
+        .dark-mode .line {
+            background-color: #ffffff;
+        }
+
+        .dark-mode .countdown-container {
+            background-color: #333333;
+            border-color: #ffffff;
+        }
+
+        .page.three h1 {
+            font-size: 72pt;
+            text-align: center; 
+            margin: 0; 
+            font-family: Georgia;
+            animation: bounceIn 1s;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        .thank {
+            font-size: 10px;
+            padding-top: 100px;
+            animation: fadeInUp 2s;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        button {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="page one">
+            <div class="title">
+                <button onclick="toggleDarkMode()" style="border-radius: 10px; border-width: 5px;">Dark Mode</button>
+                <p>The Wedding of</p>
+                <h1 style="font-family:'Times New Roman';">Lea</h1>
+                <h1 style="font-family:'Times New Roman';">&</h1>
+                <h1 style="font-family:'Times New Roman';">Rafel</h1>
+                <p>Alamat Resepsi:</p>
+                <p>Jl. Rajawali, Hotel 101</p>
+                <p>------------------------------</p>
+                <p>Yang akan dilaksanakan pada :</p>
+                <p>17 Agustus 2024</p>
+                <p>------------------------------</p>
+                <div class="countdown-container">
+                    <p>Acara akan dimulai dalam:</p>
+                    <div id="countdown" style="font-size: 30px;"></div>
+                </div>
+            </div>
+        </section>
+        <section class="page two">
+            <h2>The Beloved</h2>
+            <h1>Bride</h1>
+            <div class="card">
+                <h2>Lea Leaan</h2>
+                <div class="line"></div>
+                <p>Putri Pertama</p>
+                <p>Bapak Susanto</p>
+                <p>&</p>
+                <p>Ibu Sarimi</p>
+            </div>
+            <h2>The Beloved</h2>
+            <h1>Groom</h1>
+            <div class="card">
+                <h2>Rafel Susanto</h2>
+                <div class="line"></div>
+                <p>Putra Pertama</p>
+                <p>Bapak Kardi</p>
+                <p>&</p>
+                <p>Ibu Lini</p>
+            </div>
+        </section>
+        <section class="page three">
+            <h1>SAVE THE DATE</h1>
+            <div class="thank">
+                <h2>THANK YOU FOR MAKING OUR DAY</h2>
+            </div>
+            <h3>LEA❤RAFEL</h3>
+        </section>
+    </div>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function updateCountdown() {
+            const eventDate = new Date('August 17, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
